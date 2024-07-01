@@ -52,4 +52,9 @@ public class UserServiceIMPL implements UserService {
     public void deleteUser(String userId) {
         userServiceDAO.deleteById(userId);
     }
+
+    @Override
+    public boolean isUserExists(String userId) {
+        return userServiceDAO.existsById(userId);
+    }
 }
