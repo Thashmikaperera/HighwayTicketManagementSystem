@@ -22,8 +22,7 @@ public class TicketController {
     private VehicleServiceClient vehicleServiceClient;
     @Autowired
     private UserServiceClient userServiceClient;
-    @Autowired
-    private TicketService ticketService;
+    @Autowired    private TicketService ticketService;
 
     @GetMapping("/health")
     public String health() {
