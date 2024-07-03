@@ -48,13 +48,32 @@ public class UserServiceIMPL implements UserService {
         return conversionData.mapTo(userServiceDAO.findAll(), UserDTO.class);
     }
 
-    @Override
+    /*@Override
     public void deleteUser(String userId) {
         userServiceDAO.deleteById(userId);
-    }
+    }*/
 
     @Override
     public boolean isUserExists(String userId) {
         return userServiceDAO.existsById(userId);
+    }
+
+    @Override
+    public String login(String username, String password) {
+        User user = userServiceDAO.findUserByEmail(username);
+        if(user!= null && user.getPassword().equals(password)){
+            return "User logged in successfully!";
+        }
+        return "User user name and password invalid!";
+    }
+
+    @Override
+    public String generateUserId() {
+        User user = userServiceDAO.findFirstByOrderByUserIdDesc();
+        if(user == null){
+            return "U001";
+        }
+        int id = Integer.parseInt(user.getUserId().substring(1)) + 1;
+        return String.format("U%03d", id);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,10 +24,11 @@ public class userController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO userDTO, BindingResult bindingResult) {
+    public ResponseEntity<?> saveUser(@Validated @RequestBody UserDTO userDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         }
+        userDTO.setUserId(userService.generateUserId());
         userService.saveUser(userDTO);
         return ResponseEntity.ok("user saved successfully");
     }
@@ -50,11 +52,11 @@ public class userController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @DeleteMapping("/{userId}")
+    /*@DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable ("userId") String userId){
         userService.deleteUser(userId);
         return ResponseEntity.ok("user deleted successfully");
-    }
+    }*/
 
     @GetMapping("/userExists/{userId}")
     public ResponseEntity<?> isUserExists(@PathVariable String userId) {
@@ -68,5 +70,10 @@ public class userController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Internal server error | Unable to check user existence.\nMore Details\n" + exception);
         }
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<?> checkCredentials(@RequestParam String email, @RequestParam String password){
+        return ResponseEntity.ok(userService.login(email, password));
     }
 }
