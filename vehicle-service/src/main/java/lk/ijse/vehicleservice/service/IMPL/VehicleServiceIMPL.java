@@ -38,11 +38,11 @@ public class VehicleServiceIMPL implements VehicleService {
         return conversionData.mapTo(vehicleServiceDao.findById(vehicleId).get(), VehicleDTO.class);
     }
 
-    @Override
+   /* @Override
     public void deleteVehicle(String vehicleId) {
         vehicleServiceDao.deleteById(vehicleId);
     }
-
+*/
     @Override
     public List<VehicleDTO> getAllVehicles() {
         return conversionData.mapTo(vehicleServiceDao.findAll(), VehicleDTO.class);

@@ -1,5 +1,6 @@
 package lk.ijse.ticketservice.service.impl;
 
+import lk.ijse.ticketservice.ENUM.TicketStatus;
 import lk.ijse.ticketservice.service.TicketService;
 
 import lk.ijse.ticketservice.conversion.ConversionData;
@@ -65,5 +66,16 @@ public class TicketServiceIMPL implements TicketService {
             tickeDTOs.add(conversionData.mapTo(ticket, TicketDTO.class));
         }
         return tickeDTOs;
+    }
+
+    @Override
+    public boolean isTicketExists(String ticketId) {
+        if (ticketRepository.existsById(ticketId)){
+            TicketDTO ticket = getTicket(ticketId);
+            ticket.setTicketStatus(TicketStatus.PAID);
+            updateTicket(ticket);
+            return true;
+        }
+        return false;
     }
 }

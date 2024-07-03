@@ -1,6 +1,6 @@
-package lk.ijse.vehicleservice.service.IMPL;
+package lk.ijse.vehicleservice.client.impl;
 
-import lk.ijse.vehicleservice.service.UserServiceClient;
+import lk.ijse.vehicleservice.client.UserServiceClient;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

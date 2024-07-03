@@ -1,9 +1,8 @@
 package lk.ijse.vehicleservice.controller;
 
+import lk.ijse.vehicleservice.client.UserServiceClient;
 import lk.ijse.vehicleservice.dto.VehicleDTO;
-import lk.ijse.vehicleservice.service.UserServiceClient;
 import lk.ijse.vehicleservice.service.VehicleService;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,12 +51,12 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getVehicle(vehicleId));
     }
 
-    @DeleteMapping("/{vehicleId}")
+   /* @DeleteMapping("/{vehicleId}")
     public ResponseEntity<?> deleteVehicle(@PathVariable ("vehicleId") String vehicleId){
         vehicleService.deleteVehicle(vehicleId);
         return ResponseEntity.ok("Vehicle deleted successfully");
     }
-
+*/
     @GetMapping
     public ResponseEntity<?> getAllVehicles(){
         return ResponseEntity.ok(vehicleService.getAllVehicles());
