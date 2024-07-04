@@ -1,6 +1,6 @@
-package lk.ijse.paymentservice.service.impl;
+package lk.ijse.paymentservice.client.impl;
 
-import lk.ijse.paymentservice.service.TicketServiceClient;
+import lk.ijse.paymentservice.client.TicketServiceClient;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

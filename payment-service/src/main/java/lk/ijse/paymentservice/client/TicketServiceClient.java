@@ -1,4 +1,4 @@
-package lk.ijse.paymentservice.service;
+package lk.ijse.paymentservice.client;
 
 public interface TicketServiceClient {
     boolean isExistsTicket(String id);

@@ -1,16 +1,14 @@
 package lk.ijse.paymentservice.controller;
 
-import lk.ijse.paymentservice.ENUM.PaymentType;
 import lk.ijse.paymentservice.dto.PaymentDTO;
 import lk.ijse.paymentservice.service.PaymentService;
-import lk.ijse.paymentservice.service.TicketServiceClient;
+import lk.ijse.paymentservice.client.TicketServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.time.LocalDate;
 
 @RestController
